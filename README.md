@@ -79,6 +79,7 @@ Next I wanted to create word clouds for both positive and negative tweets about 
 #### Positive Tweets
 
 ![](Images/appleposcloud.PNG)
+
 This is interesting! A lot of the positive talk was centered around the event. in removed words, their products appear very often in the positive reviews. Using a wordcloud like this, we can mark that the event was a success with the attendees. A lot of people enjoyed the popup shop and thought very positively about the new products that were shown within it.
 #### Negative Tweets
 
