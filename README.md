@@ -23,8 +23,11 @@ I renamed all columns so that they were easier to work with. Column names will b
 ## Dealing with missing data
 There did happen to be some missing data within this set. Specifically, our product column contained more than half of it's data as missing. 
 ![](Images/missingdata.PNG)
+
 I decided to drill in and investigate to see if there was some information in the fact that the data was missing. 
+
 ![](Images/missingdataclassdist.PNG)
+
 In the graph above we see what percentage of each class in the total dataset is represented within the subset where there is no product that which the emotion is targeted at. What I found is that where there is no specific product listed, there was a significantly higher chance of there being no emotion, and that the overwhelming majority of tweets that gave neither positive nor negative sentiment were about no product in particular. All tweets classified as "I can't tell" I simply dropped from the set. Additionally, I reduced all products into 3 different classes: Apple, Google, No specific brand.
 
 ## Tokenizing Data with Regular Expressions
@@ -65,11 +68,13 @@ I looked at N-grams of length 2, 3, and 4 to see what were the most common phras
 ### Positive Bigram
 
 ![](Images/bigramcutpos.PNG)
+
 We can see here that the majority of the bigrams in the positive reviews are centered around the hype of the event, the location, and what each company was introducing.
 
 ### Negative Bigram
 
 ![](Images/bigramcutneg.PNG)
+
 The negative bigrams are more centered on gripes with the company itself, design concerns people have with each company's products as well as at some of the new products that they introduced at the event.
 
 ## Word Clouds
@@ -84,6 +89,7 @@ This is interesting! A lot of the positive talk was centered around the event. i
 #### Negative Tweets
 
 ![](Images/applenegcloud.PNG)
+
 In the negative cloud, a lot of the criticsm their products faced had to do with aspects of their design, such as battery life. It appears that some people did not find the event as much of a success, and in fact found it quite painful. The words for the phrase 'fascist company' from our bigrams also appear here, so we know that some of the negativity was targeted at the company itself and not just the products.
 
 ### Google
@@ -91,10 +97,12 @@ If people were tweeting about google, they were talking about the new social med
 #### Positive Tweets
 
 ![](Images/googleposcloud.PNG)
+
 Of the positive things people had to say about Google Circles, it focused on the ability to connect people just like other social media platforms. Positive words such as 'excited', 'fun', 'great', and 'awesome' also appear here and show the type of positive feelings that were attached to this product.
 #### Negative Tweets
 
 ![](Images/googlenegcloud.PNG)
+
 The negative cloud is much more direct in expressing it's sentiment towards the product. Specifically, the word 'product' is huge, meaning people had issues with the product of Google Circles itself. Words such as 'suck', 'lost', and 'fail' give us a sense of the distaste or displeasure that people felt towards it.
 
 # Modeling
@@ -102,12 +110,14 @@ The negative cloud is much more direct in expressing it's sentiment towards the 
 After tokenizing and vectorizing all words within the dataset, I performed Latent Semantic Analysis (LSA) to reduce the dimensionality of my data. I decided to truncate down to a dataset that still contained 98% of the explained variance.
 
 ![](Images/truncate.png)
+
 I was able to reduce my dataset from 8,344 features down to 3,630 and still keep 98% of the explained variance.
 
 ## Modeling and Tuning
 I split my data into target and test sets and ran a Logistic Regression, Random Forest, XGBooster, and a Support Vector Machine classifier on the original data. Afterwards, I performed SMOTE on the data to better deal with the class imbalance and then tuned the models using GridSearchCV. For scoring, I decided it would be best to use the macro f1 score for a few reasons: Macro f1 score tells us the strength of both our precision and recall scores, due to class imbalance accuracy would not tell us what we need to know about the classification of positive and negative tweets because of the overwhelming amount of tweets with no emotion, and I care more about correctly classifying positive and negative tweets than overall accuracy and the macro f1 score can give us a better sense of that.
 
 ![](Images/roccurvesvc.PNG)
+
 This shows the roc curve for my SVC classifier. One reason for tuning our classifiers was to attempt to reduce overfitting and better improve classification of the negative tweets
 
 ## Scores
