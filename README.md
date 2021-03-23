@@ -1,7 +1,7 @@
 # Classification of Tweet Sentiment using NLP
 
 * Non-technical slide presentation: https://docs.google.com/presentation/d/1660HWukx0fL_0tCbnfBuSO2z8h9PYZ7UxDAVsMzAa9w/edit?usp=sharing
-* Non-technical video presentation:
+* Non-technical video presentation: https://drive.google.com/file/d/1p7RZibTkElEdiN2VPzmC_6yQUioAY2RV/view?usp=sharing
 ---------------------------
 ## Predicting product sentiment for companies based on Twitter data
 ----------------------------
